@@ -272,6 +272,6 @@ Kassi::Application.routes.draw do
   # Below are the routes that are matched if didn't match inside subdomain constraints
   match '/:locale' => 'dashboard#index'
   
-  root :to => 'dashboard#index'
+  root :to => 'communities#index'
   
 end
