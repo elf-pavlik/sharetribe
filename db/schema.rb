@@ -309,7 +309,7 @@ ActiveRecord::Schema.define(:version => 20121105115053) do
   end
 
   create_table "people", :id => false, :primary_key => :id, :force => true do |t|
-    t.string   "id",                            :limit => 22,                   :null => false
+    t.string   "id",                            :limit => 36,                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "is_admin",                                    :default => 0
