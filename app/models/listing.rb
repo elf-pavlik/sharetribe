@@ -47,16 +47,16 @@ class Listing < ActiveRecord::Base
   VALID_CATEGORIES = ["item", "favor", "rideshare", "housing"]
   VALID_SHARE_TYPES = {
     "offer" => {
-      "item" => ["lend", "sell", "rent_out", "trade", "give_away"],
+      "item" => ["lend", "give_away"],
       "favor" => nil, 
       "rideshare" => nil,
-      "housing" => ["rent_out", "sell", "share_for_free"]
+      "housing" => nil
     },
     "request" => {
-      "item" => ["borrow", "buy", "rent", "trade", "receive"],
+      "item" => ["borrow", "receive"],
       "favor" => nil, 
       "rideshare" => nil,
-      "housing" => ["rent", "buy"],
+      "housing" => nil
     }
   }
   VALID_VISIBILITIES = ["everybody", "this_community", "communities"]
@@ -195,7 +195,7 @@ class Listing < ActiveRecord::Base
   end
   
   def given_share_type_is_one_of_valid_share_types
-    if ["favor", "rideshare"].include?(category)
+    if ["favor", "rideshare", "housing"].include?(category)
        errors.add(:share_type, errors.generate_message(:share_type, :must_be_nil)) unless share_type.nil?
      elsif share_type.nil?
        errors.add(:share_type, errors.generate_message(:share_type, :blank)) 
@@ -207,15 +207,7 @@ class Listing < ActiveRecord::Base
   end
   
   def self.unique_share_types(listing_type)
-    share_types = []
-    VALID_CATEGORIES.each do |category|
-      if VALID_SHARE_TYPES[listing_type][category] 
-        VALID_SHARE_TYPES[listing_type][category].each do |share_type|
-          share_types << share_type
-        end
-      end  
-    end     
-    share_types.uniq!.sort
+    VALID_SHARE_TYPES[listing_type].values.flatten.compact.uniq.sort
   end
   
   def valid_until_is_not_nil

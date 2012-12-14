@@ -927,6 +927,8 @@ en:
       request_created: Created
       rideshare_offer: "Rideshare offer"
       rideshare_request: "Rideshare request"
+      housing_offer: "Housing offer"
+      housing_request: "Housing request"
       send_private_message: "Send private message"
       share_types: "Share types"
       share_types_offer: "Type of offer"
