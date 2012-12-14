@@ -1,6 +1,7 @@
 require 'json'
 require 'rest_client'
 require "open-uri"
+require 'uuidtools'
 require File.expand_path('../../../lib/np_guid/uuid22', __FILE__)
 
 # This class represents a person (a user of Sharetribe).
@@ -148,7 +149,7 @@ class Person < ActiveRecord::Base
                                       "image/pjpeg", "image/x-png"] #the two last types are sent by IE. 
 
   before_validation(:on => :create) do
-    self.id = UUID.timestamp_create.to_s22
+    self.id = UUIDTools::UUID.random_create.to_s
   end
 
   # Override Devise's authentication finder method to allow log in with username OR email
