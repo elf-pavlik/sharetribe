@@ -76,11 +76,7 @@
             = form.hidden_field :author_id, :value => (logged_in? ? @current_user.id : "Anonymous")
             = form.hidden_field :url, :value => request.fullpath
             = form.submit t(".send_feedback_to_admin"), :class => "send_button"
-            %span
-              = t(".or_check_our")
-              = link_to t(".feedback_forum"), "http://kassi.uservoice.com"
-              = t(".to_see_what_others_have_suggested")
-    
+
       #header.container_24
         .grid_6
           #logo
