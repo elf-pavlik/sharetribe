@@ -2,14 +2,14 @@
 
 #new_tribe_form_main
 
-  = render :partial => "dashboard/notifications"
 
-  %h2
-    to start new community:
-  %ol
-    %li
-      make sure you have listing in
-      = link_to 'Occupy Directory', 'http://directory.occupy.net'
-    %li send us an email with request and link to your group in 'Occupy Directory'
+  #notifications{:style => 'margin: 50px'}
+    .info_message
+      %h1
+        interested in starting a new sphere?
+      %p
+        we plan to test this installation for another week or two, for now please send email to:
+        %strong permabank@hackers4peace.net
+        and we will send you invitation soon!
 
 = render :partial => "dashboard/footer"
